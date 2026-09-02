@@ -59,18 +59,40 @@ const ModalHandler = {
       </div>
     `;
 
-    if (task.notes) {
-      html += `
-        <div class="modal-field full">
-          <div class="modal-field-label">Notes</div>
-          <div class="modal-field-value">${escapeHTML(task.notes)}</div>
-        </div>
-      `;
-    }
+    // if (task.notes) {
+    //   html += `
+    //     <div class="modal-field full">
+    //       <div class="modal-field-label">Notes</div>
+    //       <div class="modal-field-value">${escapeHTML(task.notes)}</div>
+    //     </div>
+    //   `;
+    // }
 
     document.getElementById('modalGrid').innerHTML = html;
+    document.getElementById('modalNotes').innerHTML = task.notes;
+
 
     document.getElementById('modalOverlay').classList.add('visible');
+  },
+
+  init(onEdit, onDelete) {
+    this._onEdit = onEdit;
+    this._onDelete = onDelete;
+    document.getElementById('modalCloseBtn').addEventListener('click', () => this.close());
+    document.getElementById('modalMaximizeBtn').addEventListener('click', () => this.toggleMaximize());
+    document.getElementById('modalOverlay').addEventListener('click', (e) => {
+      if (e.target.id === 'modalOverlay') this.close();
+    });
+    document.getElementById('modalEditBtn').addEventListener('click', () => {
+      if (this._currentId) this._onEdit(this._currentId);
+    });
+    document.getElementById('modalDeleteBtn').addEventListener('click', () => {
+      if (this._currentId) this._onDelete(this._currentId);
+    });
+  },
+
+  toggleMaximize() {
+    document.getElementById('taskModal').classList.toggle('maximized');
   },
 
   close() {
