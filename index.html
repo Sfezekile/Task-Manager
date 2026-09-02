@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -20,8 +21,9 @@
   <link rel="stylesheet" href="css/views/calendar.css" />
   <link rel="stylesheet" href="css/views/gantt.css" />
   <link rel="stylesheet" href="css/views/tasklist.css" />
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet" />
 </head>
+
 <body>
 
   <!-- Always-reachable nav toggle for small screens, so a collapsed sidebar can never trap the user -->
@@ -158,8 +160,8 @@
         <h2>⚠️ Alerts</h2>
         <button class="close-btn" id="closeAlertBtn" aria-label="Close alerts">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-            <line x1="18" y1="6" x2="6" y2="18"/>
-            <line x1="6" y1="6" x2="18" y2="18"/>
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
           </svg>
         </button>
       </div>
@@ -186,8 +188,8 @@
       <h2 id="drawerTitle">Add Task</h2>
       <button class="close-btn" id="closeDrawerBtn" aria-label="Close">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-          <line x1="18" y1="6" x2="6" y2="18"/>
-          <line x1="6" y1="6" x2="18" y2="18"/>
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
         </svg>
       </button>
     </div>
@@ -201,15 +203,15 @@
         <span class="field-error" id="titleError"></span>
       </div>
 
-      <div class="field-group">
-        <label for="category">Category <span class="required">*</span></label>
-        <select id="category">
-          <option value="">Select category…</option>
-        </select>
-        <span class="field-error" id="categoryError"></span>
-      </div>
+      <div class="form-grid" id="formGrid">
+        <div class="field-group">
+          <label for="category">Category <span class="required">*</span></label>
+          <select id="category">
+            <option value="">Select category…</option>
+          </select>
+          <span class="field-error" id="categoryError"></span>
+        </div>
 
-      <div class="field-row">
         <div class="field-group">
           <label for="priority">Priority</label>
           <select id="priority">
@@ -218,6 +220,7 @@
             <option value="low">Low</option>
           </select>
         </div>
+
         <div class="field-group">
           <label for="status">Status</label>
           <select id="status">
@@ -226,35 +229,36 @@
             <option value="done">Done</option>
           </select>
         </div>
-      </div>
 
-      <div class="field-row">
         <div class="field-group">
           <label for="startDate">Start Date</label>
           <input type="date" id="startDate" />
           <span class="field-error" id="startDateError"></span>
         </div>
+
         <div class="field-group">
           <label for="dueDate">Due Date <span class="required">*</span></label>
           <input type="date" id="dueDate" />
           <span class="field-error" id="dueDateError"></span>
         </div>
-      </div>
 
-      <div class="field-group">
-        <label for="dependsOn">Depends On</label>
-        <select id="dependsOn">
-          <option value="">None</option>
-        </select>
-        <span class="field-error" id="dependsOnError"></span>
-      </div>
-
-      <div class="field-group">
-        <label for="notes">Notes</label>
-        <textarea id="notes" rows="3" placeholder="Details, links, context (optional)"></textarea>
+        <div class="field-group">
+          <label for="dependsOn">Depends On</label>
+          <select id="dependsOn">
+            <option value="">None</option>
+          </select>
+          <span class="field-error" id="dependsOnError"></span>
+        </div>
       </div>
 
       <div class="dependency-display" id="dependencyDisplay"></div>
+
+      <div class="form-notes">
+        <div class="field-group">
+          <label for="notes">Notes</label>
+          <textarea id="notes" rows="3" placeholder="Details, links, context (optional)"></textarea>
+        </div>
+      </div>
 
       <div class="form-actions">
         <button type="button" class="btn-secondary" id="cancelFormBtn">Cancel</button>
@@ -269,12 +273,13 @@
       <div class="modal-header" id="modalHeader">
         <div class="modal-name" id="modalName"></div>
         <div class="modal-type-badge" id="modalTypeBadge"></div>
-        <button class="expand-btn modal-expand"  id="modalMaximizeBtn" aria-label="Maximize modal">
+        <button class="expand-btn modal-expand" id="modalMaximizeBtn" aria-label="Maximize modal">
           <i class="ri-expand-diagonal-s-line"></i>
         </button>
         <button class="close-btn modal-close" id="modalCloseBtn" aria-label="Close modal">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
           </svg>
         </button>
       </div>
@@ -315,4 +320,5 @@
   <script src="js/ui/form.js"></script>
   <script src="js/main.js"></script>
 </body>
+
 </html>
