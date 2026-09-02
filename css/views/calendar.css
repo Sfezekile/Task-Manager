@@ -1,0 +1,310 @@
+/* ============================================================
+   VIEW — CALENDAR (month/week/year)
+   ============================================================ */
+
+/* ---------- CALENDAR: MONTH VIEW ---------- */
+.cal-month {
+  background: var(--surface);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.cal-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--border);
+}
+
+.cal-weekday {
+  padding: 10px 8px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--text-secondary);
+}
+
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.cal-cell {
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  min-height: 110px;
+  padding: 6px;
+  position: relative;
+  background: var(--surface);
+  transition: background .12s;
+}
+
+.cal-cell:hover {
+  background: #FAFBFF;
+}
+
+.cal-cell:nth-child(7n) {
+  border-right: none;
+}
+
+.cal-cell.other-month {
+  background: #FAFAFA;
+}
+
+.cal-cell.other-month .cell-day {
+  color: var(--text-muted);
+}
+
+.cal-cell.is-today {
+  background: var(--accent-light);
+}
+
+.cal-cell.is-today .cell-day {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.cell-day {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+  line-height: 1;
+}
+
+.cell-today-ring {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff !important;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.cell-events {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* ---------- LEAVE PILL ---------- */
+.leave-pill {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: 5px;
+  padding: 2px 5px;
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: opacity .12s, transform .12s;
+  line-height: 1.4;
+  min-height: 18px;
+}
+
+.leave-pill:hover {
+  opacity: .85;
+  transform: scale(1.02);
+}
+
+.leave-pill.pill-start {
+  border-radius: 3px 0 0 3px;
+}
+
+.leave-pill.pill-mid {
+  border-radius: 0;
+  margin-left: -1px;
+}
+
+.leave-pill.pill-end {
+  border-radius: 0 3px 3px 0;
+}
+
+.leave-pill.pill-single {
+  border-radius: 3px;
+}
+
+.pill-more {
+  font-size: 10px;
+  color: var(--text-muted);
+  padding: 1px 4px;
+  cursor: pointer;
+}
+
+.pill-more:hover {
+  color: var(--accent);
+}
+
+/* ---------- CALENDAR: WEEK VIEW ---------- */
+.cal-week {
+  background: var(--surface);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.week-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--border);
+}
+
+.week-day-hdr {
+  padding: 12px 10px;
+  text-align: center;
+  border-right: 1px solid var(--border);
+}
+
+.week-day-hdr:last-child {
+  border-right: none;
+}
+
+.week-day-name {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--text-secondary);
+}
+
+.week-day-num {
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--text-primary);
+  margin-top: 2px;
+}
+
+.week-day-hdr.is-today .week-day-num {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.week-body {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  min-height: 280px;
+}
+
+.week-cell {
+  border-right: 1px solid var(--border);
+  padding: 10px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.week-cell:last-child {
+  border-right: none;
+}
+
+.week-cell.is-today {
+  background: var(--accent-light);
+}
+
+/* ---------- CALENDAR: YEAR VIEW ---------- */
+.cal-year {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.mini-month {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.mini-month-header {
+  padding: 10px 12px;
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: .01em;
+}
+
+.mini-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  padding: 4px 6px 0;
+}
+
+.mini-wd {
+  text-align: center;
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  padding: 3px 0;
+}
+
+.mini-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  padding: 0 6px 6px;
+  gap: 1px;
+}
+
+.mini-cell {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  font-size: 10px;
+  color: var(--text-secondary);
+  position: relative;
+  cursor: default;
+}
+
+.mini-cell.other-month {
+  color: var(--text-muted);
+  opacity: .4;
+}
+
+.mini-cell.is-today {
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+}
+
+.mini-cell.has-leave {
+  cursor: pointer;
+}
+
+.mini-cell.has-leave:hover {
+  background: var(--surface-2);
+}
+
+.mini-cell .mini-dots {
+  position: absolute;
+  bottom: 1px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 2px;
+}
+
+.mini-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+}
+

@@ -1,0 +1,88 @@
+/* ============================================================
+   MOMENTUM — TOKENS & RESET
+   ============================================================ */
+
+/* ============================================================
+   NMC Leave Tracker – Stylesheet
+   Design: clean institutional, Inter typeface, color-coded leave
+   Enhanced for multinational organization management
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ---------- TOKENS ---------- */
+:root {
+  --bg: #F5F6F8;
+  --surface: #FFFFFF;
+  --surface-2: #EDEEF1;
+  --border: #DDE0E7;
+  --border-focus: #3B6EE0;
+
+  --text-primary: #111827;
+  --text-secondary: #6B7280;
+  --text-muted: #9CA3AF;
+
+  --accent: #2558D8;
+  --accent-light: #EAF0FD;
+  --accent-hover: #1A45B8;
+
+  --danger: #DC2626;
+  --danger-light: #FEE2E2;
+
+  --success: #16A34A;
+  --success-light: #DCFCE7;
+
+  --warning: #D97706;
+  --warning-light: #FFFBEB;
+
+  --radius: 8px;
+  --radius-sm: 5px;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, .08), 0 1px 2px rgba(0, 0, 0, .05);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, .10);
+  --shadow-lg: 0 10px 30px rgba(0, 0, 0, .14);
+
+  --drawer-w: 380px;
+  --legend-w: 240px;
+
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* ---------- RESET ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 14px;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  border: none;
+  background: none;
+}
+
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+

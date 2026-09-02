@@ -1,0 +1,634 @@
+/* ============================================================
+   VIEW — TASK LIST (table)
+   ============================================================ */
+
+/* ============================================================
+   TASK LIST VIEW - Enhanced Table
+   ============================================================ */
+
+.list-view-wrap {
+  height: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+/* --- Filter Bar --- */
+.list-filters {
+  padding: 16px 20px;
+  background: var(--surface-2);
+  border-bottom: 2px solid var(--border);
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: flex-end;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 140px;
+}
+
+.filter-group label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.filter-group label i {
+  font-size: 13px;
+}
+
+.filter-group .list-filter-input,
+.filter-group .list-filter-select {
+  padding: 8px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  background: var(--surface);
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color .15s;
+  width: 100%;
+}
+
+.filter-group .list-filter-input:focus,
+.filter-group .list-filter-select:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(59, 110, 224, .12);
+}
+
+.filter-group .list-filter-input::placeholder {
+  color: var(--text-muted);
+}
+
+.filter-actions {
+  flex: 0 0 auto;
+  min-width: auto;
+  justify-content: flex-end;
+}
+
+.filter-clear-btn {
+  padding: 8px 18px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  transition: all .15s;
+  cursor: pointer;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.filter-clear-btn:hover {
+  background: var(--danger-light);
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+/* --- Table --- */
+.list-table-wrap {
+  overflow-x: auto;
+  max-height: calc(100% - 0%);
+  overflow-y: auto;
+}
+
+.list-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.list-table thead {
+  background: var(--surface-2);
+  border-bottom: 2px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.list-table thead th {
+  padding: 12px 14px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  border-right: 1px solid var(--border);
+  cursor: pointer;
+  user-select: none;
+  transition: background .12s;
+}
+
+.list-table thead th:last-child {
+  border-right: none;
+}
+
+.list-table thead th:hover {
+  background: var(--border);
+}
+
+.list-table thead th i {
+  font-size: 12px;
+  margin-left: 4px;
+  opacity: 0.5;
+}
+
+.list-table thead th .ri-arrow-up-line,
+.list-table thead th .ri-arrow-down-line {
+  opacity: 1;
+  color: var(--accent);
+}
+
+.list-table tbody tr {
+  border-bottom: 1px solid var(--border);
+  transition: background .12s;
+}
+
+.list-table tbody tr:hover {
+  background: var(--accent-light);
+}
+
+.list-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.list-table td {
+  padding: 10px 14px;
+  vertical-align: middle;
+  border-right: 1px solid var(--border);
+}
+
+.list-table td:last-child {
+  border-right: none;
+}
+
+/* --- Cell: Title --- */
+.list-cell-title {
+  min-width: 200px;
+}
+
+.list-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.list-status-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 1.5px solid transparent;
+}
+
+.list-status-dot.list-status-todo {
+  background: var(--text-muted);
+  border-color: var(--text-muted);
+}
+
+.list-status-dot.list-status-progress {
+  background: var(--accent);
+  border-color: var(--accent);
+  animation: pulse-dot 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+}
+
+.list-status-dot.list-status-done {
+  background: var(--success);
+  border-color: var(--success);
+}
+
+.list-status-dot.list-status-blocked {
+  background: var(--danger);
+  border-color: var(--danger);
+}
+
+.list-title-text {
+  font-weight: 500;
+  color: var(--text-primary);
+  flex: 1;
+  min-width: 60px;
+}
+
+.list-title-done {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.list-badge-blocked {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--danger);
+  background: var(--danger-light);
+  padding: 2px 10px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  border: 1px solid #FECACA;
+}
+
+.list-badge-blocked i {
+  font-size: 11px;
+}
+
+/* --- Cell: Category --- */
+.list-cell-category .category-tag {
+  font-size: 11px;
+  padding: 3px 10px;
+  font-weight: 600;
+}
+
+/* --- Cell: Priority --- */
+.list-cell-priority {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.list-cell-priority .priority-dot {
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+}
+
+/* --- Cell: Status --- */
+.list-status-label {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 12px;
+  border-radius: 12px;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.list-status-label.list-status-todo {
+  background: var(--surface-2);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+}
+
+.list-status-label.list-status-progress {
+  background: var(--accent-light);
+  color: var(--accent);
+  border: 1px solid #BFDBFE;
+}
+
+.list-status-label.list-status-done {
+  background: var(--success-light);
+  color: var(--success);
+  border: 1px solid #BBF7D0;
+}
+
+.list-status-label.list-status-blocked {
+  background: var(--danger-light);
+  color: var(--danger);
+  border: 1px solid #FECACA;
+}
+
+/* --- Cell: Due Date --- */
+.list-cell-due {
+  font-weight: 500;
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.list-due-relative {
+  display: block;
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin-top: 1px;
+}
+
+.list-cell-due.list-due-overdue {
+  color: var(--danger);
+  font-weight: 700;
+}
+
+.list-cell-due.list-due-overdue .list-due-relative {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+.list-cell-due.list-due-today {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.list-cell-due.list-due-today .list-due-relative {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* --- Cell: Depends On --- */
+.list-cell-depends {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.list-dep-link {
+  color: var(--accent);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-style: dotted;
+}
+
+.list-dep-link:hover {
+  color: var(--accent-hover);
+  text-decoration-style: solid;
+}
+
+/* --- Cell: Actions --- */
+.list-cell-actions {
+  white-space: nowrap;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.list-action-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-secondary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .15s;
+  cursor: pointer;
+}
+
+.list-action-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-light);
+}
+
+.list-action-btn:active {
+  transform: scale(.95);
+}
+
+.list-action-view:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.list-action-edit:hover {
+  border-color: var(--warning);
+  color: var(--warning);
+  background: var(--warning-light);
+}
+
+/* --- Empty State --- */
+.list-empty-row td {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.list-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-muted);
+}
+
+.list-empty-state i {
+  font-size: 40px;
+  opacity: 0.3;
+}
+
+.list-empty-state p {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.list-empty-state .filter-clear-btn {
+  height: auto;
+  padding: 6px 16px;
+}
+
+/* --- Footer --- */
+.list-footer {
+  padding: 10px 20px;
+  border-top: 1px solid var(--border);
+  background: var(--surface-2);
+  display: flex;
+  gap: 24px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  flex-wrap: wrap;
+}
+
+.list-count {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.list-count-done {
+  color: var(--success);
+}
+
+.list-count-overdue {
+  color: var(--danger);
+}
+
+/* --- Empty view --- */
+.list-empty {
+  padding: 60px 24px;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.list-empty i {
+  font-size: 48px;
+  opacity: 0.3;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.list-empty p {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.list-empty-sub {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+
+/* --- Responsive --- */
+@media (max-width: 1100px) {
+  .filter-row {
+    gap: 12px;
+  }
+
+  .filter-group {
+    min-width: 120px;
+    flex: 1 1 calc(50% - 12px);
+  }
+
+  .filter-actions {
+    flex: 1 1 100%;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 900px) {
+  .list-table-wrap {
+    max-height: calc(100vh - 450px);
+  }
+
+  .list-table thead th,
+  .list-table td {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  .list-cell-title {
+    min-width: 140px;
+  }
+}
+
+@media (max-width: 640px) {
+  .list-filters {
+    padding: 12px 14px;
+  }
+
+  .filter-group {
+    flex: 1 1 100%;
+    min-width: 100%;
+  }
+
+  .filter-actions {
+    flex: 1 1 100%;
+  }
+
+  .filter-clear-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .list-table-wrap {
+    max-height: calc(100vh - 500px);
+  }
+
+  .list-table thead th,
+  .list-table td {
+    padding: 6px 8px;
+    font-size: 11px;
+  }
+
+  .list-cell-title {
+    min-width: 100px;
+  }
+
+  .list-due-relative {
+    font-size: 9px;
+  }
+
+  .list-footer {
+    gap: 12px;
+    font-size: 11px;
+    padding: 8px 14px;
+    flex-wrap: wrap;
+  }
+
+  .list-cell-actions {
+    gap: 2px;
+  }
+
+  .list-action-btn {
+    width: 26px;
+    height: 26px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 400px) {
+
+  .list-table thead th,
+  .list-table td {
+    padding: 4px 6px;
+    font-size: 10px;
+  }
+
+  .list-title-text {
+    font-size: 11px;
+  }
+
+  .list-badge-blocked {
+    font-size: 8px;
+    padding: 1px 6px;
+  }
+}
+
+@media (max-width: 640px) {
+
+  .list-table th,
+  .list-table td {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  .list-cell-title {
+    min-width: 120px;
+  }
+
+  .list-cell-due .list-due-relative {
+    font-size: 9px;
+  }
+
+  .list-filter-wrap {
+    flex-direction: column;
+  }
+
+  .list-filter {
+    width: 100%;
+  }
+}
+
