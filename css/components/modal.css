@@ -22,7 +22,7 @@
 }
 
 .modal {
-  background: var(--surface);
+  background: var(--nav-bg);
   border-radius: 12px;
   width: 100%;
   max-width: 60vw;
@@ -83,7 +83,7 @@
   color: var(--text);
 }
 .modal-expand:hover {
-  background: var(--surface-2);
+  background: var(--nav-bg-2);
   color: var(--text-primary);
 }
 
@@ -227,6 +227,6 @@
   border-top: 1px solid var(--border);
   display: flex;
   justify-content: flex-end;
-  background: var(--surface);
+  background: var(--nav-bg-2);
   gap: 8px;
 }

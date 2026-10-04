@@ -31,6 +31,28 @@
 
 @media (max-width: 768px) {
   .legend-panel {
+    display: block;
+    flex: 0 0 0;
+    padding: 10px;
+    width: 0;
+    height: 0;
+    overflow: visible;
+    border: 0;
+  }
+
+  .legend-panel .actions-section {
+    position: fixed;
+    left: 50%;
+    bottom: calc(5vh + env(safe-area-inset-bottom));
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: min(40vh, calc(100vw - 24px));
+    height: 15vh;
+    border-radius: 15px;
+  }
+
+  .legend-panel .legend-header,
+  .legend-panel .legend-list {
     display: none;
   }
 
@@ -189,4 +211,3 @@
     -webkit-print-color-adjust: exact;
   }
 }
-

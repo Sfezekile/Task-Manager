@@ -12,17 +12,24 @@
 
 /* ---------- TOKENS ---------- */
 :root {
-  --bg: #F5F6F8;
-  --surface: #FFFFFF;
+  --bg: #F0EBD8;
+  --bg-2: #FAF4E4;
+  --nav-bg: #1A1A1A;
+  --nav-bg-2: #2c2c2c;
+  --surface: #F5F5F5;
   --surface-2: #EDEEF1;
-  --border: #DDE0E7;
+  --border: #3a3a3a;
+  --nav-border: #3a3a3a;
   --border-focus: #3B6EE0;
 
-  --text-primary: #111827;
-  --text-secondary: #6B7280;
-  --text-muted: #9CA3AF;
+  --text-primary: #F5F5F5;
+  --text-secondary: #1a1a1a;
+  --text-muted: #7c7c7e;
 
-  --accent: #2558D8;
+  --accent: #65ABFD;
+  --accent-2: #1267CA;
+  --accent-3: #D69DC8;
+  --accent-4: #94B506;
   --accent-light: #EAF0FD;
   --accent-hover: #1A45B8;
 
@@ -42,7 +49,7 @@
   --shadow-lg: 0 10px 30px rgba(0, 0, 0, .14);
 
   --drawer-w: 380px;
-  --legend-w: 240px;
+  --legend-w: 54vh;
 
   --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
@@ -59,6 +66,7 @@
 html {
   font-size: 14px;
 }
+html::-webkit-scrollbar { display: none; }
 
 body {
   font-family: var(--font);

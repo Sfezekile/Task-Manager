@@ -50,7 +50,7 @@
 }
 
 .stat-card {
-  background: var(--surface);
+  background: var(--nav-bg);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow-sm);
@@ -58,19 +58,18 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
-  border-left: 4px solid var(--accent);
 }
 
 .stat-card.stat-overdue {
-  border-left-color: var(--danger);
+  background: var(--nav-bg);
 }
 
 .stat-card.stat-week {
-  border-left-color: var(--warning);
+  background: var(--nav-bg);
 }
 
 .stat-card.stat-done {
-  border-left-color: var(--success);
+  background: var(--nav-bg);
 }
 
 .stat-label {

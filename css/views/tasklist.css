@@ -8,7 +8,7 @@
 
 .list-view-wrap {
   height: 100%;
-  background: var(--surface);
+  background: var(--bg-2);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow-sm);
@@ -42,7 +42,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: .05em;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   display: flex;
   align-items: center;
   gap: 4px;
@@ -58,8 +58,8 @@
   border: 1.5px solid var(--border);
   border-radius: var(--radius-sm);
   font-size: 13px;
-  background: var(--surface);
-  color: var(--text-primary);
+  background: var(--accent-3);
+  color: var(--text-secondary);
   outline: none;
   transition: border-color .15s;
   width: 100%;
@@ -72,7 +72,7 @@
 }
 
 .filter-group .list-filter-input::placeholder {
-  color: var(--text-muted);
+  color: var(--text-secondary);
 }
 
 .filter-actions {
@@ -87,7 +87,7 @@
   font-size: 12px;
   font-weight: 600;
   color: var(--text-secondary);
-  background: var(--surface);
+  background: var(--accent-3);
   border: 1.5px solid var(--border);
   transition: all .15s;
   cursor: pointer;
@@ -117,7 +117,7 @@
 }
 
 .list-table thead {
-  background: var(--surface-2);
+  background: var(--accent);
   border-bottom: 2px solid var(--border);
   position: sticky;
   top: 0;
@@ -144,7 +144,7 @@
 }
 
 .list-table thead th:hover {
-  background: var(--border);
+  background: var(--accent-hover);
 }
 
 .list-table thead th i {
@@ -156,7 +156,7 @@
 .list-table thead th .ri-arrow-up-line,
 .list-table thead th .ri-arrow-down-line {
   opacity: 1;
-  color: var(--accent);
+  color: var(--accent-3);
 }
 
 .list-table tbody tr {
@@ -210,19 +210,6 @@
 .list-status-dot.list-status-progress {
   background: var(--accent);
   border-color: var(--accent);
-  animation: pulse-dot 1.5s ease-in-out infinite;
-}
-
-@keyframes pulse-dot {
-
-  0%,
-  100% {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 0.4;
-  }
 }
 
 .list-status-dot.list-status-done {
@@ -237,7 +224,7 @@
 
 .list-title-text {
   font-weight: 500;
-  color: var(--text-primary);
+  color: var(--text-secondary);
   flex: 1;
   min-width: 60px;
 }
@@ -453,7 +440,7 @@
 .list-footer {
   padding: 10px 20px;
   border-top: 1px solid var(--border);
-  background: var(--surface-2);
+  background: var(--accent);
   display: flex;
   gap: 24px;
   font-size: 12px;
@@ -463,14 +450,28 @@
 
 .list-count {
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--text-secondary);
 }
 
 .list-count-done {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 12px;
+  border-radius: 12px;
+  display: inline-block;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
   color: var(--success);
 }
 
 .list-count-overdue {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 12px;
+  border-radius: 12px;
+  display: inline-block;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
   color: var(--danger);
 }
 

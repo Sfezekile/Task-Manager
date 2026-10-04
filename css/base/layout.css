@@ -23,7 +23,7 @@
   padding: 3px 8px;
   border-radius: var(--radius-sm);
 }
-
+/* 
 .view-tabs {
   display: flex;
   background: var(--surface-2);
@@ -37,7 +37,7 @@
   border-radius: 6px;
   font-size: 13px;
   font-weight: 500;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   transition: background .15s, color .15s;
 }
 
@@ -57,7 +57,7 @@
   border-radius: var(--radius-sm);
   border: 1px solid var(--border);
   background: var(--surface);
-  color: var(--text-secondary);
+  color: var(--text-primary);
   font-size: 14px;
   display: flex;
   align-items: center;
@@ -68,7 +68,7 @@
 .nav-btn:hover {
   border-color: var(--accent);
   color: var(--accent);
-}
+} */
 
 .date-label {
   font-size: 14px;
@@ -84,7 +84,7 @@
   border-radius: var(--radius-sm);
   border: 1px solid var(--border);
   background: var(--surface);
-  color: var(--text-secondary);
+  color: var(--text-primary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -107,7 +107,7 @@
   border: 1px solid var(--border);
   font-size: 13px;
   font-weight: 500;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   background: var(--surface);
   transition: border-color .15s, color .15s;
 }
@@ -132,7 +132,7 @@
   gap: 12px;
   padding: 10px 16px;
   border-bottom: 1px solid var(--border);
-  background: var(--surface-2);
+  background: var(--accent-3);
 }
 
 /* ---------- APP BODY ---------- */
@@ -142,10 +142,13 @@
   position: relative;
 }
 
+
 /* ---------- CALENDAR AREA ---------- */
 .calendar-area {
   flex: 1;
   padding: 24px;
+  margin-left: 250px;
+  margin-right: 54vh;
   overflow: auto;
   transition: margin-right .3s ease;
 }

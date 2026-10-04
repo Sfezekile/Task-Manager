@@ -25,15 +25,19 @@
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  background: var(--surface);
+  background: var(--nav-bg);
   border: 1px solid var(--border);
   box-shadow: var(--shadow-md);
   align-items: center;
   justify-content: center;
-  color: var(--text-secondary);
+  color: var(--accent);
   font-size: 18px;
 }
-.mobile-nav-toggle:hover { color: var(--accent); border-color: var(--accent); }
+
+.mobile-nav-toggle:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
 
 @media (max-width: 900px) {
   body.nav-collapsed .mobile-nav-toggle {
@@ -44,11 +48,14 @@
 .side-nav {
   width: var(--sidenav-w);
   flex-shrink: 0;
-  background: var(--surface);
+  background: var(--nav-bg);
   border-right: 1px solid var(--border);
-  position: sticky;
+  border-radius: 10px;
+  position: fixed;
   top: 0;
-  height: 100vh;
+  bottom: 0;
+  margin: 10px;
+  height: clamp(100vh - 50vh);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -63,9 +70,9 @@
 /* --- Sidebar Topbar --- */
 .side-topbar {
   padding: 16px 16px 12px;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--nav-border);
   flex-shrink: 0;
-  background: var(--surface);
+  background: var(--nav-bg);
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -90,7 +97,7 @@
   font-weight: 700;
   letter-spacing: .06em;
   color: var(--accent);
-  background: var(--accent-light);
+  background: var(--nav-bg);
   padding: 4px 10px;
   border-radius: var(--radius-sm);
   white-space: nowrap;
@@ -105,17 +112,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-secondary);
-  border: 1px solid var(--border);
-  background: var(--surface);
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  background: var(--nav-bg);
   font-size: 18px;
   transition: background .12s, color .12s, transform .3s;
   flex-shrink: 0;
 }
 
 .side-nav-toggle:hover {
-  background: var(--surface-2);
-  color: var(--accent);
+  background: var(--nav-bg-2);
+  color: var(--border);
+  border: 1px solid var(--border);
 }
 
 .side-nav.collapsed .side-nav-toggle {
@@ -131,7 +139,7 @@
   display: flex;
   align-items: center;
   gap: 0px;
-  background: var(--surface-2);
+  background: var(--nav-bg);
   border-radius: var(--radius);
   padding: 4px 8px;
 }
@@ -142,7 +150,7 @@
   border-radius: var(--radius-sm);
   border: 1px solid transparent;
   background: transparent;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   font-size: 14px;
   display: flex;
   align-items: center;
@@ -152,8 +160,8 @@
 }
 
 .side-date-nav .nav-btn:hover {
-  border-color: var(--border);
-  background: var(--surface);
+  border-color: var(--accent);
+  background: var(--nav-bg);
   color: var(--accent);
 }
 
@@ -189,18 +197,21 @@
   justify-content: center;
 }
 
+
 /* Filter tabs in sidebar */
 .side-filter-wrap {
-  margin: 0;
+  margin: 0px 0 10px;
+  width: 100%;
 }
 
 .side-filter-wrap .view-tabs {
   display: flex;
-  background: var(--surface-2);
+  background: var(--nav-bg);
   border-radius: var(--radius);
-  padding: 3px;
+  padding: 5px;
+  height: 50px;
   gap: 2px;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   overflow-x: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -215,7 +226,7 @@
   border-radius: 5px;
   font-size: 11px;
   font-weight: 500;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   transition: all .15s;
   white-space: nowrap;
   flex: 1;
@@ -224,8 +235,8 @@
 }
 
 .side-filter-wrap .tab-btn.active {
-  background: var(--surface);
-  color: var(--text-primary);
+  background: var(--nav-bg-2);
+  color: var(--accent);
   box-shadow: var(--shadow-sm);
 }
 
@@ -248,8 +259,8 @@
   height: 34px;
   border-radius: var(--radius-sm);
   border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--text-secondary);
+  /* background: var(--bg); */
+  color: var(--text-primary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -257,6 +268,21 @@
   position: relative;
   flex-shrink: 0;
   font-size: 16px;
+}
+
+.side-actions .notify {
+  background: var(--danger-light);
+  color: var(--accent);
+}
+
+.side-actions .backup {
+  background: var(--accent);
+  color: var(--surface);
+}
+
+.side-actions .restore {
+  background: var(--accent-4);
+  color: var(--surface);
 }
 
 .side-actions .btn-icon:hover {
@@ -346,7 +372,7 @@
   font-size: 12px;
   font-weight: 500;
   color: #fff;
-  background: var(--accent);
+  background: var(--accent-2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -424,15 +450,6 @@
 }
 
 /* Navigation items spacing */
-.side-nav-list {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  padding: 12px 10px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  flex: 1;
-}
 
 .side-nav-item {
   display: flex;
@@ -442,7 +459,6 @@
   border-radius: var(--radius-sm);
   font-size: 13px;
   font-weight: 500;
-  color: var(--text-secondary);
   white-space: nowrap;
   transition: all .12s;
   position: relative;
@@ -451,17 +467,18 @@
 .side-nav-item i {
   font-size: 18px;
   width: 22px;
+  color: var(--text-primary);
   flex-shrink: 0;
   text-align: center;
 }
 
 .side-nav-item:hover {
-  background: var(--surface-2);
+  background: var(--nav-bg-2);
   color: var(--text-primary);
 }
 
 .side-nav-item.active {
-  background: var(--accent-light);
+  background: var(--nav-bg-2);
   color: var(--accent);
   font-weight: 600;
 }
@@ -637,22 +654,32 @@
   color: var(--text-secondary);
   white-space: nowrap;
   transition: background .12s, color .12s;
+
+}
+
+.side-nav-label {
+  color: var(--text-primary);
+  background: transparent;
 }
 
 .side-nav-item i {
   font-size: 18px;
+  font-weight: 300;
   width: 20px;
   flex-shrink: 0;
   text-align: center;
 }
 
 .side-nav-item:hover {
-  background: var(--surface-2);
+  background: var(--nav-bg-2);
   color: var(--text-primary);
 }
 
-.side-nav-item.active {
-  background: var(--accent-light);
+.side-nav-item.active:hover {
+  background: var(--nav-bg-2);
+}
+
+.side-nav-item.active i, .side-nav-item.active .side-nav-label {
   color: var(--accent);
 }
 
@@ -734,8 +761,8 @@
 /* ---------- QUICK ADD BLOCK ---------- */
 .quick-add-block {
   padding: 12px 14px;
-  border-bottom: 1px solid var(--border);
-  background: var(--surface-2);
+  border-bottom: 1px solid var(--nav-border);
+  background: var(--nav-bg-2);
   flex-shrink: 0;
 }
 
@@ -768,9 +795,9 @@
   gap: 4px;
   padding: 8px 4px;
   border-radius: var(--radius-sm);
-  border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--text-secondary);
+  border: 1px solid var(--nav-border);
+  background: var(--nav-bg);
+  color: var(--text-primary);
   font-size: 10px;
   font-weight: 600;
   transition: all .15s;
@@ -820,19 +847,18 @@
   .quick-add-block {
     padding: 8px 10px;
   }
-  
+
   .quick-add-grid {
     gap: 4px;
   }
-  
+
   .quick-add-btn {
     padding: 6px 2px;
     min-height: 44px;
     font-size: 9px;
   }
-  
+
   .quick-add-btn i {
     font-size: 16px;
   }
 }
-

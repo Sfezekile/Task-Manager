@@ -61,7 +61,7 @@
 .drawer-header h2 {
   font-size: 16px;
   font-weight: 700;
-  color: var(--text-primary);
+  color: var(--text-secondary);
 }
 
 .close-btn {
@@ -82,7 +82,7 @@
 
 .close-btn:hover {
   background: var(--surface-2);
-  color: var(--text-primary);
+  color: var(--text-secondary);
 }
 
 .form-grid {
@@ -110,7 +110,7 @@
   line-height: 1.7;
   resize: vertical;
   background: var(--surface);
-  color: var(--text-primary);
+  color: var(--text-secondary);
 }
 
 .form-actions {
@@ -161,7 +161,7 @@
   border: 1.5px solid var(--border);
   border-radius: var(--radius-sm);
   font-size: 13.5px;
-  color: var(--text-primary);
+  color: var(--text-secondary);
   background: var(--surface);
   transition: border-color .15s;
   outline: none;
@@ -228,12 +228,12 @@
 
 .btn-secondary {
   background: var(--surface-2);
-  color: var(--text-primary);
+  color: var(--text-secondary);
   border: 1px solid var(--border);
 }
 
 .btn-secondary:hover {
-  background: var(--border);
+  background: var(--surface);
 }
 
 .btn-danger {
