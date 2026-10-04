@@ -18,17 +18,17 @@ const App = {
     FormHandler.init(() => this.refresh());
 
     document.getElementById('prevBtn').addEventListener('click', () => {
-      if (Dashboard.view === 'calendar' || Dashboard.view === 'gantt') Dashboard.calPrev();
+      if (Dashboard.view === 'calendar') Dashboard.calPrev();
       else Dashboard.cycleMode(-1);
       this.refresh();
     });
     document.getElementById('nextBtn').addEventListener('click', () => {
-      if (Dashboard.view === 'calendar' || Dashboard.view === 'gantt') Dashboard.calNext();
+      if (Dashboard.view === 'calendar') Dashboard.calNext();
       else Dashboard.cycleMode(1);
       this.refresh();
     });
     document.getElementById('todayBtn').addEventListener('click', (e) => {
-      if (Dashboard.view === 'calendar' || Dashboard.view === 'gantt') {
+      if (Dashboard.view === 'calendar') {
         Dashboard.calToday();
       } else {
         Dashboard.dueTodayOnly = !Dashboard.dueTodayOnly;

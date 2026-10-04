@@ -123,6 +123,18 @@
   color: var(--accent);
 }
 
+
+/* ---------- ACTIONS SECTION ---------- */
+.actions-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-2);
+}
+
 /* ---------- APP BODY ---------- */
 .app-body {
   display: flex;

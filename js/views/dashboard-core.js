@@ -3,7 +3,7 @@
 /* ============================================================
    DASHBOARD SHELL — mode/view state, stats, upcoming panel
    depends on: constants.js, date-utils.js, store.js, helpers.js
-   extended by: view-board.js, view-calendar.js, view-gantt.js, view-tasklist.js
+   extended by: view-board.js, view-calendar.js, view-tasklist.js
    (those files each call Object.assign(Dashboard, {...}) to add their
    render method, so they must load AFTER this file and BEFORE main.js)
    ============================================================ */
@@ -56,16 +56,16 @@ const Dashboard = {
 
   setView(view) {
     this.view = view;
-    const filterWrap = document.getElementById('topbarFilterWrap');
+    // const filterWrap = document.getElementById('topbarFilterWrap');
     const todayBtn = document.getElementById('todayBtn');
-    const isMonthBased = view === 'calendar' || view === 'gantt';
+    const isMonthBased = view === 'calendar';
     if (isMonthBased) {
-      filterWrap.style.display = 'none';
+      // filterWrap.style.display = 'none';
       todayBtn.textContent = 'This Month';
       todayBtn.title = 'Jump to current month';
       todayBtn.classList.remove('active-filter');
     } else {
-      filterWrap.style.display = '';
+      // filterWrap.style.display = '';
       todayBtn.textContent = 'Due Today';
       todayBtn.title = 'Show tasks due today';
       todayBtn.classList.toggle('active-filter', this.dueTodayOnly);
@@ -87,7 +87,7 @@ const Dashboard = {
   },
 
   periodLabel() {
-    if (this.view === 'calendar' || this.view === 'gantt') {
+    if (this.view === 'calendar') {
       return `${MONTHS_FULL[this.calMonth]} ${this.calYear}`;
     }
     return MODE_META[this.mode].label;
@@ -213,7 +213,6 @@ const Dashboard = {
   },
 
   // _renderBoard (view-board.js), _renderCalendar (view-calendar.js),
-  // _renderGantt (view-gantt.js) and _renderListView (view-tasklist.js)
   // are attached to this object via Object.assign in their own files.
   render() {
     document.getElementById('currentDateLabel').textContent = this.periodLabel();
@@ -227,8 +226,6 @@ const Dashboard = {
     }
     if (this.view === 'calendar') {
       this._renderCalendar();
-    } else if (this.view === 'gantt') {
-      this._renderGantt();
     } else if (this.view === 'list') {
       this._renderListView();
     } else {

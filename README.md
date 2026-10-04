@@ -10,7 +10,7 @@ exactly one new file, and the full JS load order was smoke-tested).
 ```
 js/data/        constants, date-utils, store, backup      (state layer)
 js/ui/          toast, alerts, sidebar, modal, form        (UI components)
-js/views/       dashboard-core + view-board/calendar/gantt/tasklist
+js/views/       dashboard-core + view-board/calendar/tasklist
 js/helpers.js   escapeHTML / categoryLabel / categoryTagHTML
 js/main.js      App bootstrap — loaded last
 ```
@@ -27,7 +27,7 @@ object; each `views/view-*.js` file adds its render method with
 ```
 css/base/         tokens, layout, shared states (tags/FAB/empty/spinner), base responsive
 css/components/   sidebar, alerts, legend/upcoming panel, form drawer, modal, toast
-css/views/         dashboard-shell (mode switcher + stats), board, calendar, gantt, tasklist
+css/views/         dashboard-shell (mode switcher + stats), board, calendar, tasklist
 ```
 
 ## Adding a new view or component later
