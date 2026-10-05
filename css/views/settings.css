@@ -127,7 +127,7 @@ body.density-compact .settings-row { padding: 8px 0; }
 :root[data-theme="dark"] {
   --surface: #1c1f26;
   --bg: #262a33;
-  --bg-2: #262a33;
+  --bg-2: #181c24;
   --bg-hover: #3a3f4d;
   --accent-hover: #323744;
   --border: #323744;

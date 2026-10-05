@@ -99,6 +99,20 @@ const Dashboard = {
     });
   },
 
+  _renderWelcome() {
+    const wrap = document.getElementById('mainWelcome');
+    if (!wrap) return;
+
+    const acc = this.getAccount();
+
+    wrap.innerHTML = `
+      <section class="welcome-section">
+        <div class="welcome-name" id="welcomeNameLabel">Hello <span>${escapeHTML(acc.name || 'User')}</span>!</div>
+        <div class="welcome-sub">what are we doing today!</div>
+      </section>
+    `;
+  },
+
   _renderStats() {
     const s = TaskStore.stats(this.mode);
     const row = document.getElementById('statsRow');
@@ -221,15 +235,19 @@ const Dashboard = {
     const filterWrap = document.getElementById('topbarFilterWrap');
     const panel = document.getElementById('legendPanel');
     const main = document.getElementById('dashboardArea');
+    const greet = document.getElementById('mainWelcome');
     if (this.view === 'board') {
       statsRow.style.display = '';
       filterWrap.style.display = '';
       panel.style.display = '';
+      greet.style.display = '';
       main.style.marginRight = '54vh';
       this._renderStats();
+      this._renderWelcome();
     } else {
       statsRow.style.display = 'none';
       filterWrap.style.display = 'none';
+      greet.style.display = 'none';
     }
     if (this.view === 'calendar') {
       panel.style.display = '';

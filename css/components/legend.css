@@ -17,6 +17,7 @@
   right: 0;
   height: 97vh;
 }
+.legend-panel::-webkit-scrollbar { display: none; }
 
 .legend-header {
   display: flex;
@@ -320,13 +321,13 @@
 .side-actions .btn-today:hover {
   border-color: var(--accent);
   color: var(--accent);
-  background: var(--accent-light);
+  background: var(--bg-2);
 }
 
 .side-actions .btn-today.active-filter {
   border-color: var(--accent);
-  background: var(--accent-light);
-  color: var(--accent);
+  background: var(--bg);
+  color: var(--text-secondary);
 }
 
 .side-actions .fab {
