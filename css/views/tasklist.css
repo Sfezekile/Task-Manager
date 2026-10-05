@@ -18,7 +18,7 @@
 /* --- Filter Bar --- */
 .list-filters {
   padding: 16px 20px;
-  background: var(--surface-2);
+  background: var(--bg-hover);
   border-bottom: 2px solid var(--border);
 }
 
@@ -58,7 +58,7 @@
   border: 1.5px solid var(--border);
   border-radius: var(--radius-sm);
   font-size: 13px;
-  background: var(--accent-3);
+  background: var(--accent-2);
   color: var(--text-secondary);
   outline: none;
   transition: border-color .15s;
@@ -87,7 +87,7 @@
   font-size: 12px;
   font-weight: 600;
   color: var(--text-secondary);
-  background: var(--accent-3);
+  background: var(--accent-2);
   border: 1.5px solid var(--border);
   transition: all .15s;
   cursor: pointer;
@@ -143,9 +143,9 @@
   border-right: none;
 }
 
-.list-table thead th:hover {
-  background: var(--accent-hover);
-}
+/* .list-table thead th:hover {
+  background: var(--bg-hover);
+} */
 
 .list-table thead th i {
   font-size: 12px;
@@ -156,7 +156,7 @@
 .list-table thead th .ri-arrow-up-line,
 .list-table thead th .ri-arrow-down-line {
   opacity: 1;
-  color: var(--accent-3);
+  color: var(--accent-2);
 }
 
 .list-table tbody tr {
@@ -165,7 +165,7 @@
 }
 
 .list-table tbody tr:hover {
-  background: var(--accent-light);
+  background: var(--bg-hover);
 }
 
 .list-table tbody tr:last-child {
@@ -286,7 +286,7 @@
 }
 
 .list-status-label.list-status-todo {
-  background: var(--surface-2);
+  background: var(--bg-hover);
   color: var(--text-secondary);
   border: 1px solid var(--border);
 }
@@ -441,6 +441,7 @@
   padding: 10px 20px;
   border-top: 1px solid var(--border);
   background: var(--accent);
+  align-items: center;
   display: flex;
   gap: 24px;
   font-size: 12px;
@@ -450,7 +451,7 @@
 
 .list-count {
   font-weight: 600;
-  color: var(--text-secondary);
+  color: var(--text-primary);
 }
 
 .list-count-done {
@@ -459,7 +460,7 @@
   padding: 3px 12px;
   border-radius: 12px;
   display: inline-block;
-  background: var(--surface-2);
+  background: var(--bg-hover);
   border: 1px solid var(--border);
   color: var(--success);
 }
@@ -470,7 +471,7 @@
   padding: 3px 12px;
   border-radius: 12px;
   display: inline-block;
-  background: var(--surface-2);
+  background: var(--bg-hover);
   border: 1px solid var(--border);
   color: var(--danger);
 }

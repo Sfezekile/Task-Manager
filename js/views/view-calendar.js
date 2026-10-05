@@ -9,7 +9,7 @@
 Object.assign(Dashboard, {
 
   _taskPillHTML(task) {
-    const color = CATEGORY_COLORS[task.category] || '#6B7280';
+    const color = CATEGORY_COLORS[task.category] || '#b0bdd8';
     const blocked = TaskStore.isBlocked(this.mode, task);
     return `
       <div class="leave-pill pill-single ${blocked ? 'is-blocked-pill' : ''}"

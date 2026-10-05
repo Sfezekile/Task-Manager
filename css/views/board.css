@@ -12,11 +12,11 @@
 
 .task-board.single-column {
   grid-template-columns: 1fr;
-  max-width: 640px;
+  max-width: 150vh;
 }
 
 .task-column {
-  background: var(--nav-bg-2);
+  background: var(--bg);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow-sm);
@@ -28,7 +28,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 12px 14px;
-  background: var(--nav-bg);
+  background: var(--bg);
   border-bottom: 1px solid var(--border);
 }
 
@@ -44,7 +44,7 @@
   font-size: 11px;
   font-weight: 700;
   color: var(--text-secondary);
-  background: var(--accent-3);
+  background: var(--accent-2);
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 1px 8px;
@@ -67,7 +67,7 @@
 
 /* ---------- TASK CARD ---------- */
 .task-card {
-  background: var(--nav-bg);
+  background: var(--bg);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   padding: 10px 12px;
@@ -103,7 +103,7 @@
 .task-title {
   font-size: 13.5px;
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--text-secondary);
   line-height: 1.35;
 }
 

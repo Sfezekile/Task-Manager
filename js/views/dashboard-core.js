@@ -212,22 +212,41 @@ const Dashboard = {
     });
   },
 
-  // _renderBoard (view-board.js), _renderCalendar (view-calendar.js),
+  // _renderBoard (view-board.js), _renderCalendar (view-calendar.js), _renderSettings (view-settings.js),
   // are attached to this object via Object.assign in their own files.
   render() {
     document.getElementById('currentDateLabel').textContent = this.periodLabel();
     this._renderModeSwitcher();
     const statsRow = document.getElementById('statsRow');
+    const filterWrap = document.getElementById('topbarFilterWrap');
+    const panel = document.getElementById('legendPanel');
+    const main = document.getElementById('dashboardArea');
     if (this.view === 'board') {
       statsRow.style.display = '';
+      filterWrap.style.display = '';
+      panel.style.display = '';
+      main.style.marginRight = '54vh';
       this._renderStats();
     } else {
       statsRow.style.display = 'none';
+      filterWrap.style.display = 'none';
     }
     if (this.view === 'calendar') {
+      panel.style.display = '';
+      main.style.marginRight = '54vh';
       this._renderCalendar();
     } else if (this.view === 'list') {
+      panel.style.display = '';
+      main.style.marginRight = '54vh';
       this._renderListView();
+    } else if (this.view === 'settings') {
+      panel.style.display = 'none';
+      main.style.marginRight = '20px';
+      this._renderSettings();
+    } else if (this.view === 'account') {
+      panel.style.display = 'none';
+      main.style.marginRight = '20px';
+      this._renderAccount();
     } else {
       this._renderBoard();
     }

@@ -81,7 +81,7 @@
 }
 
 .close-btn:hover {
-  background: var(--surface-2);
+  background: var(--bg-hover);
   color: var(--text-secondary);
 }
 
@@ -227,7 +227,7 @@
 }
 
 .btn-secondary {
-  background: var(--surface-2);
+  background: var(--bg-hover);
   color: var(--text-secondary);
   border: 1px solid var(--border);
 }

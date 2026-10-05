@@ -19,7 +19,9 @@
   <link rel="stylesheet" href="css/views/dashboard-shell.css" />
   <link rel="stylesheet" href="css/views/board.css" />
   <link rel="stylesheet" href="css/views/calendar.css" />
+  <link rel="stylesheet" href="css/views/settings.css" />
   <link rel="stylesheet" href="css/views/tasklist.css" />
+  <link rel="stylesheet" href="css/views/account.css" />
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet" />
 </head>
 
@@ -47,73 +49,63 @@
         </div>
       </div>
 
-      <!-- Date navigation -->
-      <!-- <div class="side-date-nav">
-          <button class="nav-btn" id="prevBtn" title="Previous mode"><i class="ri-arrow-left-s-line"></i></button>
-          <span class="date-label" id="currentDateLabel">Loading…</span>
-          <button class="nav-btn" id="nextBtn" title="Next mode"><i class="ri-arrow-right-s-line"></i></button>
-        </div> -->
-
-
-
-      <!-- Action buttons -->
-      <!-- <div class="side-actions">
-          <button class="btn-icon" id="alertToggleBtn" title="Alerts">
-            <i class="ri-notification-3-line"></i>
-            <span class="alert-badge" id="alertBadge">0</span>
-          </button>
-          <button class="btn-icon" id="backupBtn" title="Backup Data">
-            <i class="ri-download-2-line"></i>
-          </button>
-          <button class="btn-icon" id="restoreBtn" title="Restore Data">
-            <i class="ri-upload-2-line"></i>
-          </button>
-          <button class="btn-today" id="todayBtn" title="Show tasks due today">Due Today</button>
-          <button class="fab" id="fabBtn" title="Add Task">
-            <i class="ri-add-line"></i> <span class="fab-label">Add Task</span>
-          </button>
-        </div> -->
-
-      <!-- QUICK ACTION BLOCK - New! -->
-      <div class="quick-add-block">
-        <div class="quick-add-header">
-          <span class="quick-add-label">Quick Action</span>
+      <div class="side-main-nav">
+        <div class="main-nav-top">
+          <!-- QUICK ACTION BLOCK - New!
+          <div class="quick-add-block">
+            <div class="quick-add-header">
+              <span class="quick-add-label">Quick Action</span>
+            </div>
+            <div class="quick-add-grid">
+              <button class="quick-add-btn" data-type="task" title="Quick Add Task">
+                <i class="ri-checkbox-circle-line"></i>
+                <span>Task</span>
+              </button>
+              <button class="quick-add-btn" data-type="project" title="Quick Add Project">
+                <i class="ri-folder-4-line"></i>
+                <span>Project</span>
+              </button>
+              <button class="quick-add-btn" data-type="bug" title="Quick Add Bug">
+                <i class="ri-bug-2-line"></i>
+                <span>Bug</span>
+              </button>
+            </div>
+          </div> -->
+    
+          <!-- Navigation items -->
+          <nav class="side-nav-list">
+            <button class="side-nav-item active" data-view="board" title="Dashboard">
+              <i class="ri-layout-grid-line"></i>
+              <span class="side-nav-label">Dashboard</span>
+            </button>
+            <button class="side-nav-item" data-view="calendar" title="Calendar">
+              <i class="ri-calendar-2-line"></i>
+              <span class="side-nav-label">Calendar</span>
+            </button>
+            <button class="side-nav-item" data-view="list" title="Task List">
+              <i class="ri-list-check-2"></i>
+              <span class="side-nav-label">Task List</span>
+            </button>
+          </nav>
         </div>
-        <div class="quick-add-grid">
-          <button class="quick-add-btn" data-type="task" title="Quick Add Task">
-            <i class="ri-checkbox-circle-line"></i>
-            <span>Task</span>
-          </button>
-          <button class="quick-add-btn" data-type="project" title="Quick Add Project">
-            <i class="ri-folder-4-line"></i>
-            <span>Project</span>
-          </button>
-          <button class="quick-add-btn" data-type="bug" title="Quick Add Bug">
-            <i class="ri-bug-2-line"></i>
-            <span>Bug</span>
-          </button>
+        <div class="main-nav-bottom">
+          <!-- Navigation items -->
+          <nav class="side-nav-list">
+            <button class="side-nav-item" data-view="settings" title="Settings">
+              <i class="ri-settings-5-fill"></i>
+              <span class="side-nav-label">Settings</span>
+            </button>
+            <button class="side-nav-item" data-view="account" title="Account">
+              <i class="ri-user-fill"></i>
+              <span class="side-nav-label">Account</span>
+            </button>
+          </nav>
         </div>
       </div>
-
-      <!-- Navigation items -->
-      <nav class="side-nav-list">
-        <button class="side-nav-item active" data-view="board" title="Dashboard">
-          <i class="ri-layout-grid-line"></i>
-          <span class="side-nav-label">Dashboard</span>
-        </button>
-        <button class="side-nav-item" data-view="calendar" title="Calendar">
-          <i class="ri-calendar-2-line"></i>
-          <span class="side-nav-label">Calendar</span>
-        </button>
-        <button class="side-nav-item" data-view="list" title="Task List">
-          <i class="ri-list-check-2"></i>
-          <span class="side-nav-label">Task List</span>
-        </button>
-      </nav>
     </aside>
 
     <!-- DASHBOARD AREA -->
-    <main class="calendar-area" id="dashboardArea">
+    <main class="main-view-area" id="dashboardArea">
 
       <!-- STATS -->
       <div class="stats-row" id="statsRow"></div>
@@ -153,7 +145,7 @@
           <nav class="view-tabs" id="statusTabs">
             <button class="tab-btn active" data-status="all">All</button>
             <button class="tab-btn" data-status="todo">To Do</button>
-            <button class="tab-btn" data-status="inprogress">In Progress</button>
+            <button class="tab-btn" data-status="inprogress">Progress</button>
             <button class="tab-btn" data-status="blocked">Blocked</button>
             <button class="tab-btn" data-status="done">Done</button>
           </nav>
@@ -323,6 +315,8 @@
   <script src="js/views/view-board.js"></script>
   <script src="js/views/view-calendar.js"></script>
   <script src="js/views/view-tasklist.js"></script>
+  <script src="js/views/view-settings.js"></script>
+  <script src="js/views/view-account.js"></script>
   <script src="js/ui/sidebar.js"></script>
   <script src="js/ui/modal.js"></script>
   <script src="js/ui/form.js"></script>

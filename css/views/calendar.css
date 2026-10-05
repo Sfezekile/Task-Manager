@@ -83,7 +83,7 @@
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: var(--accent-3);
+  background: var(--accent-2);
   color: #fff !important;
   font-size: 12px;
   font-weight: 700;
@@ -158,7 +158,7 @@
 .week-header {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  background: var(--surface-2);
+  background: var(--bg-hover);
   border-bottom: 1px solid var(--border);
 }
 
@@ -231,7 +231,7 @@
 
 .mini-month-header {
   padding: 10px 12px;
-  background: var(--surface-2);
+  background: var(--bg-hover);
   border-bottom: 1px solid var(--border);
   font-size: 12px;
   font-weight: 700;
@@ -290,7 +290,7 @@
 }
 
 .mini-cell.has-leave:hover {
-  background: var(--surface-2);
+  background: var(--bg-hover);
 }
 
 .mini-cell .mini-dots {

@@ -50,7 +50,7 @@
 }
 
 .stat-card {
-  background: var(--nav-bg);
+  background: var(--bg);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow-sm);
@@ -61,15 +61,15 @@
 }
 
 .stat-card.stat-overdue {
-  background: var(--nav-bg);
+  background: var(--bg);
 }
 
 .stat-card.stat-week {
-  background: var(--nav-bg);
+  background: var(--bg);
 }
 
 .stat-card.stat-done {
-  background: var(--nav-bg);
+  background: var(--bg);
 }
 
 .stat-label {
@@ -83,7 +83,7 @@
 .stat-value {
   font-size: 26px;
   font-weight: 700;
-  color: var(--text-primary);
+  color: var(--text-secondary);
   line-height: 1.1;
 }
 
