@@ -78,6 +78,7 @@
 }
 
 @media (max-width: 640px) {
+  
   .btn-icon {
     width: 28px;
     height: 28px;
@@ -155,7 +156,7 @@
     height: 24px;
     font-size: 12px;
   }
-
+  
   .view-tabs .tab-btn {
     padding: 3px 8px;
     font-size: 11px;

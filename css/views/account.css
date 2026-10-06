@@ -3,13 +3,38 @@
    ============================================================ */
 
 .account-view {
+  --c-todo: #94A3B8;
+  --c-inprogress: #3B82F6;
+  --c-blocked: #EF4444;
+  --c-done: #22C55E;
   display: flex;
   flex-direction: column;
   gap: 16px;
   max-width: 200vh;
 }
 
+.account-layout {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto auto;
+  gap: 16px;
+}
+
+.account-l-layout,
+.account-r-layout {
+  display: grid;
+  grid-row: span 2;
+  grid-template-rows: subgrid;   /* gap is inherited from .account-layout */
+  width: auto;                   /* replaces width: 100% */
+}
+.account-l-layout > *,
+.account-r-layout > * {
+  min-height: 0;       /* lets grid items shrink instead of overflowing */
+}
+
+
 .account-card {
+  position: relative;
   background: var(--bg-2);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -38,6 +63,7 @@
 /* Hero */
 .account-hero {
   display: flex;
+  min-height: 120px;
   align-items: center;
   gap: 16px;
 }
@@ -75,83 +101,11 @@
   margin-top: 4px;
 }
 
-/* Stats */
-.account-stats {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-}
-
-.account-stat {
-  background: var(--bg-2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-sm);
-  padding: 14px 16px;
-}
-
-.account-stat-num {
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--text-secondary);
-  line-height: 1.1;
-}
-
-.account-stat-label {
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: .05em;
-  color: var(--text-muted);
-  margin-top: 4px;
-}
-
-.account-stat.is-warn .account-stat-num {
-  color: #DC2626;
-}
-
-/* Breakdown bar */
-.account-bar {
-  display: flex;
-  height: 10px;
-  border-radius: 999px;
-  overflow: hidden;
-  background: var(--bg-hover);
-  gap: 2px;
-}
-
-.account-legend {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 16px;
-  margin-top: 12px;
-  font-size: 12px;
-  color: var(--text-secondary);
-}
-
-.account-legend-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.account-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.seg-todo { background: #94A3B8; }
-.seg-inprogress { background: #3B82F6; }
-.seg-blocked { background: #EF4444; }
-.seg-done { background: #22C55E; }
-
 /* Form */
 .account-form {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 14px 16px;
+  gap: 10px 16px;
 }
 
 .account-field {
@@ -203,16 +157,262 @@
   color: #16A34A;
 }
 
+/* ---------- Layout: stack columns on narrow screens ---------- */
+@media (max-width: 900px) {
+  .account-layout { flex-direction: column; }
+}
+
+/* ---------- Stats ---------- */
+.account-stats {
+  display: grid;
+  height: 100%;
+  grid-auto-rows: 1fr; /* stat cards share the row height evenly */
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* 4 across when wide, 2x2 / 1 col as it narrows */
+  gap: 10px;
+}
+
+.account-stat {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;               /* label drops under the number if cramped */
+  gap: 4px 8px;
+  min-height: 64px;              /* floor, not a fixed height */
+  padding: 12px 16px;
+}
+
+.account-stat-num {
+  font-size: clamp(20px, 2.2vw, 26px);
+  font-weight: 700;
+  color: var(--text-secondary);
+  line-height: 1.1;
+}
+
+.account-stat-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--text-muted);
+  min-width: 0;
+}
+
+.account-stat.is-warn .account-stat-num { color: #DC2626; }
+
+/* ---------- Donut breakdown ---------- */
+.account-view {
+  --c-todo: #94A3B8;
+  --c-inprogress: #3B82F6;
+  --c-blocked: #EF4444;
+  --c-done: #22C55E;
+}
+
+.seg-todo       { background: var(--c-todo); }
+.seg-inprogress { background: var(--c-inprogress); }
+.seg-blocked    { background: var(--c-blocked); }
+.seg-done       { background: var(--c-done); }
+
+.account-graph {
+  container-type: inline-size;   /* children can size from the card's width */
+  width: 100%;
+}
+
+.account-stats-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;               /* legend drops under the donut when narrow */
+  gap: 20px 24px;
+}
+
+.account-donut {
+  position: relative;
+  flex-shrink: 0;
+  width: clamp(110px, 38cqi, 170px);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+}
+
+.account-donut-hole {
+  position: absolute;
+  inset: 13%;                    /* ring thickness scales with the donut */
+  border-radius: 50%;
+  background: var(--bg-2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.account-donut-hole strong {
+  font-size: clamp(18px, 7cqi, 26px);
+  line-height: 1;
+  color: var(--text-secondary);
+}
+
+.account-donut-hole span {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.account-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.account-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.account-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* When the card is narrow, show the legend as a 2-column grid under the donut */
+@container (max-width: 320px) {
+  .account-stats-container { justify-content: center; }
+  .account-legend {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 16px;
+  }
+  .account-hero {
+    flex-direction: column;
+  }
+}
+
+.account-user-mode {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;                     /* removed top:-37px */
+}
+
+.mode-btn {
+  border: 1px solid var(--border);
+  background: var(--bg-2);
+  color: var(--text-secondary);
+  border-radius: 8px;
+  padding: 7px 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .12s, color .12s;
+}
+
+.mode-btn:hover { background: var(--bg-hover); }
+
+.mode-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
 /* Data */
+.account-data {
+  display: flex;
+  flex-direction: column;
+
+}
 .account-data-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 12px;
+}
+.account-backup, .account-restore {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 15vh;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 9px 9px 0 0;
+  box-shadow: var(--shadow-sm);
+  padding: 10px 20px;
+}
+.account-restore {
+  border-radius: 0 0 9px 9px;
+  border-top: none;
+}
+.account-content {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.account-title {
+  color: var(--text-secondary);
+}
+.account-data-title {
+  padding: 0;
+  margin: 10px 10px 0;
+}
+.account-data-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mode-btn {
+  flex: 1;
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 13.5px;
+  font-weight: 600;
+  transition: background .15s, opacity .15s;
+}
+
+@media (max-width: 900px) {
+  .account-layout {
+    display: flex;
+    flex-direction: column;
+  }
+  .account-l-layout,
+  .account-r-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .account-hero {
+    flex-direction: column;
+  }
 }
 
 @media (max-width: 700px) {
-  .account-stats { grid-template-columns: repeat(2, 1fr); }
-  .account-form { grid-template-columns: 1fr; }
-  .account-hero { flex-direction: column; align-items: flex-start; }
+  .account-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .account-form {
+    grid-template-columns: 1fr;
+  }
+
+  .account-hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .account-legend {
+    top: -20px;
+    left: 0px;
+  }
+  .account-user-mode {
+    top: -37px;
+    right: 0px;
+    flex-direction: row;
+  }
 }

@@ -110,23 +110,6 @@ Object.assign(Dashboard, {
         </section>
 
         <section class="settings-card">
-          <h3 class="settings-card-title"><i class="ri-database-2-line"></i> Data</h3>
-          ${this._settingsRow('Current workspace',
-            `${tasks.length} task${tasks.length === 1 ? '' : 's'} · ${done} completed`,
-            '')}
-          ${this._settingsRow('Backup', 'Download all your data as a file.',
-            `<button type="button" class="btn-secondary btn-sm" id="settingsBackupBtn">
-               <i class="ri-download-2-line"></i> Backup
-             </button>`)}
-          ${this._settingsRow('Restore', 'Load data from a previous backup.',
-            `<button type="button" class="btn-secondary btn-sm" id="settingsRestoreBtn">
-               <i class="ri-upload-2-line"></i> Restore
-             </button>`)}
-          ${this._settingsRow('Reset preferences', 'Restore theme, density and default view to defaults. Tasks are not affected.',
-            `<button type="button" class="btn-danger btn-sm" id="settingsResetBtn">Reset</button>`)}
-        </section>
-
-        <section class="settings-card">
           <h3 class="settings-card-title"><i class="ri-information-line"></i> About</h3>
           <p class="settings-muted">Momentum – Task Dashboard. Your data is stored locally in this browser.</p>
         </section>
