@@ -333,7 +333,7 @@
   flex-wrap: wrap;
   gap: 8px;
 }
-.account-backup, .account-restore {
+.account-backup, .account-restore, .account-reset {
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -346,14 +346,12 @@
   padding: 10px 20px;
 }
 .account-restore {
-  border-radius: 0 0 9px 9px;
+  border-radius: 0 0;
   border-top: none;
 }
-.account-content {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  gap: 10px;
+.account-reset {
+  border-radius: 0 0 9px 9px;
+  border-top: none;
 }
 .account-title {
   color: var(--text-secondary);
@@ -366,6 +364,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 .mode-btn {
   flex: 1;

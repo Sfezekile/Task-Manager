@@ -148,30 +148,6 @@ Object.assign(Dashboard, {
             </section>
           </div>
         </section>
-
-        <h3 class="account-card-title account-data-title"><i class="ri-database-2-line"></i> Your data</h3>
-
-        <section class="account-data">
-          <div class="account-backup">
-            <div class="account-content">
-              <h3 class="account-title">Backup</h3>
-              <p class="account-muted">Everything is stored locally in this browser. Back up regularly, since clearing browser data will erase it.</p>
-            </div>
-            <div class="account-data-actions">
-              <button type="button" class="btn-secondary btn-sm" id="accBackupBtn"><i class="ri-download-2-line"></i> Backup</button>
-            </div>
-          </div>
-
-          <div class="account-restore">
-            <div class="account-content">
-              <h3 class="account-title">Restore</h3>
-              <p class="account-muted">Everything is stored locally in this browser. Back up regularly, since clearing browser data will erase it.</p>
-            </div>
-            <div class="account-data-actions">
-              <button type="button" class="btn-secondary btn-sm" id="accRestoreBtn"><i class="ri-upload-2-line"></i> Restore</button>
-            </div>
-          </div>
-        </section>
       </div>
     `;
 
