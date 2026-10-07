@@ -72,9 +72,6 @@ const App = {
         FormHandler.close();
         AlertSystem.close();
       }
-      if (e.key === 'n' && !FormHandler._isOpen && !e.ctrlKey && !e.metaKey) {
-        FormHandler.open();
-      }
     });
 
     this._recoverSession();
@@ -99,7 +96,7 @@ const App = {
           Toast.show('Recovered data from previous session', 'warning');
         }
         sessionStorage.removeItem(SESSION_KEY);
-      } catch (e) { /* ignore */ }
+      } catch (e) { /* later implimentation */ }
     }
     window.addEventListener('beforeunload', () => {
       sessionStorage.setItem(SESSION_KEY, JSON.stringify({
