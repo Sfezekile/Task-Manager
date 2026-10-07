@@ -109,6 +109,44 @@ Object.assign(Dashboard, {
           </div>
         </section>
 
+        <h3 class="account-card-title account-data-title"><i class="ri-database-2-line"></i> Your data</h3>
+
+        <section class="account-data">
+          <div class="account-backup">
+            <div class="account-content">
+              <h3 class="account-title">Backup</h3>
+              <p class="account-muted">Everything is stored locally in this browser. Back up regularly, since clearing browser data will erase it.</p>
+            </div>
+            <div class="account-data-actions">
+              ${this._settingsRow('Backup', 'Download all your data as a file.',
+               `<button type="button" class="btn-secondary btn-sm" id="settingsBackupBtn"><i class="ri-download-2-line"></i> Backup</button>`)}
+            </div>
+          </div>
+
+          <div class="account-restore">
+            <div class="account-content">
+              <h3 class="account-title">Restore</h3>
+              <p class="account-muted">Everything is stored locally in this browser. Back up regularly, since clearing browser data will erase it.</p>
+            </div>
+            <div class="account-data-actions">
+              ${this._settingsRow('Restore', 'Load data from a previous backup.',
+               `<button type="button" class="btn-secondary btn-sm" id="settingsRestoreBtn"><i class="ri-upload-2-line"></i> Restore</button>`)}
+            </div>
+          </div>
+          <div class="account-reset">
+            <div class="account-content">
+              <h3 class="account-title">Reset</h3>
+              <p class="account-muted">Everything is stored locally in this browser. Back up regularly, since clearing browser data will erase it.</p>
+            </div>
+            <div class="account-data-actions">
+              ${this._settingsRow('Reset preferences', 'Restore theme, density and default view to defaults. Tasks are not affected.',
+               `<button type="button" class="btn-danger btn-sm" id="settingsResetBtn">Reset</button>`)}
+            </div>
+          </div>
+        </section>
+        
+          
+
         <section class="settings-card">
           <h3 class="settings-card-title"><i class="ri-information-line"></i> About</h3>
           <p class="settings-muted">Momentum – Task Dashboard. Your data is stored locally in this browser.</p>
